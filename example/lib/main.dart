@@ -67,8 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void setupHR() {
     hotRecharge = HotRecharge(
-      accessCode: '<your-acc-email>',
-      accessPswd: '<your-acc-pswd>',
+      accessCode: '<your-email@email.com>',
+      accessPswd: 'your-password-you-used-to-register',
       //enableLogger: true, // enable detailed request logger on console. Use while TESTING only
     );
   }
@@ -140,11 +140,15 @@ class _MyHomePageState extends State<MyHomePage> {
             loading
                 ? CircularProgressIndicator()
                 : Container(
-                    color: Colors.blue,
+                    width: MediaQuery.of(context).size.width * .5,
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor,
+                        borderRadius: BorderRadius.circular(10)),
                     child: TextButton(
                       onPressed: () async => await rechargeNumber(),
                       child: Text(
                         'Recharge',
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
                   ),
